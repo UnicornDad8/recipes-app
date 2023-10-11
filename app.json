@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "recipes-app",
+    "name": "Recipes",
     "slug": "recipes-app",
     "version": "1.0.0",
     "packagerOpts": {
@@ -8,7 +8,7 @@
       "sourceExts": ["js", "jsx", "css"]
     },
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/appIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
