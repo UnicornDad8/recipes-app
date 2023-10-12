@@ -5,7 +5,7 @@ import Button from "../../components/Button/Button";
 import colors from "../../constants/Colors";
 import styles from "./Splash.modules.css";
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
   return (
     <View>
       <StatusBar style="light" />
@@ -30,7 +30,15 @@ const Splash = () => {
             <Text style={[styles.subtitle, { color: colors.white }]}>
               Simple way to find Tasty Recipe
             </Text>
-            <Button>Start Cooking</Button>
+            <Button onPress={() => navigation.navigate("Home")}>
+              <Text style={[styles.text, { color: colors.white }]}>
+                Start Cooking
+              </Text>
+              <Image
+                style={styles.icon}
+                source={require("../../../assets/arrowRight.png")}
+              />
+            </Button>
           </View>
         </View>
       </ImageBackground>
