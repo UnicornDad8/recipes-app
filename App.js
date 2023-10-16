@@ -4,7 +4,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Splash from "./src/screens/Splash";
 import Home from "./src/screens/Home";
-import Search from "./src/screens/Search/Search";
+import Search from "./src/screens/Search";
 
 const Stack = createStackNavigator();
 

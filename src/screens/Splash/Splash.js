@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import Button from "../../components/Button/Button";
+import Button from "../../components/Button";
 import colors from "../../constants/Colors";
 import styles from "./Splash.modules.css";
 
