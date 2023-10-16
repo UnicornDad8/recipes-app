@@ -1,10 +1,10 @@
 import React, { memo } from "react";
-import { View, TextInput, Image } from "react-native";
+import { View, TextInput, Image, Pressable } from "react-native";
 import colors from "../../constants/Colors.js";
 import styles from "./Input.modules.css";
 
-const Input = ({ placeholder, showSearchIcon, style }) => {
-  return (
+const Input = ({ placeholder, showSearchIcon, style, pressable, onPress }) => {
+  const renderInput = () => (
     <View style={[styles.container, style, { borderColor: colors.lightGray }]}>
       {showSearchIcon ? (
         <Image
@@ -13,12 +13,23 @@ const Input = ({ placeholder, showSearchIcon, style }) => {
         />
       ) : null}
       <TextInput
+        editable={!pressable}
         placeholderTextColor={colors.lightGray}
         placeholder={placeholder}
         style={[styles.input, { color: colors.black }]}
       />
     </View>
   );
+
+  if (pressable) {
+    return (
+      <Pressable onPress={onPress}>
+        <View pointerEvents="none">{renderInput()}</View>
+      </Pressable>
+    );
+  }
+
+  return <View pointerEvents="none">{renderInput()}</View>;
 };
 
 Input.defaultProps = {

@@ -7,9 +7,7 @@ const Home = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Text>Welcome</Text>
-        <Text onPress={() => navigation.navigate("Search")}>Go to search</Text>
-        <Input />
+        <Input pressable={true} onPress={() => navigation.navigate("Search")} />
       </View>
     </SafeAreaView>
   );

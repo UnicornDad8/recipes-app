@@ -1,11 +1,14 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView, View } from "react-native";
+import Input from "../../components/Input";
 import styles from "./Search.modules.css";
 
 const Search = () => {
   return (
     <SafeAreaView>
-      <Text>Search screen</Text>
+      <View style={styles.container}>
+        <Input pressable={false} />
+      </View>
     </SafeAreaView>
   );
 };
