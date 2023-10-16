@@ -5,7 +5,10 @@ import styles from "./Input.modules.css";
 
 const Input = ({ placeholder, showSearchIcon, style, pressable, onPress }) => {
   const renderInput = () => (
-    <View style={[styles.container, style, { borderColor: colors.lightGray }]}>
+    <View
+      pointerEvents="none"
+      style={[styles.container, style, { borderColor: colors.lightGray }]}
+    >
       {showSearchIcon ? (
         <Image
           style={styles.icon}
@@ -22,14 +25,10 @@ const Input = ({ placeholder, showSearchIcon, style, pressable, onPress }) => {
   );
 
   if (pressable) {
-    return (
-      <Pressable onPress={onPress}>
-        <View pointerEvents="none">{renderInput()}</View>
-      </Pressable>
-    );
+    return <Pressable onPress={onPress}>{renderInput()}</Pressable>;
   }
 
-  return <View pointerEvents="none">{renderInput()}</View>;
+  return renderInput();
 };
 
 Input.defaultProps = {
