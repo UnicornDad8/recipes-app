@@ -1,0 +1,20 @@
+.item {
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 12px;
+}
+
+.selectedItem {
+  color: #000;
+  font-weight: 700;
+}
+
+.itemContainer {
+  padding: 5px 0;
+  margin-right: 8px;
+  margin-bottom: 32px;
+}
+
+.selectedItemContainer {
+  border-radius: 10px;
+}
