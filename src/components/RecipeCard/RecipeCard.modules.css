@@ -1,8 +1,7 @@
 .title {
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 10px;
-  flex: 1;
+  margin-bottom: 8px;
 }
 
 .row {
@@ -31,6 +30,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: 8px;
 }
 
 .image {

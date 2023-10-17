@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, Dimensions } from "react-native";
+import Rating from "../Rating";
 import colors from "../../constants/Colors";
 import styles from "./RecipeCard.modules.css";
 
@@ -28,9 +29,15 @@ const RecipeCard = ({ title, image, author, rating, time }) => {
       }}
     >
       <View style={styles.row}>
-        <Text numberOfLines={1} style={[styles.title, { color: colors.gray }]}>
-          {title}
-        </Text>
+        <View style={{ flex: 1 }}>
+          <Text
+            numberOfLines={1}
+            style={[styles.title, { color: colors.gray }]}
+          >
+            {title}
+          </Text>
+          <Rating rating={4.2} />
+        </View>
         <Image
           style={styles.image}
           source={{

@@ -1,0 +1,10 @@
+.row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.star {
+  width: 12px;
+  height: 12px;
+  margin: 2px;
+}
