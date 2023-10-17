@@ -1,0 +1,41 @@
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.cardFooter {
+  font-size: 11px;
+}
+
+.authorImage {
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  margin-right: 8px;
+}
+
+.timerIcon {
+  width: 17px;
+  height: 17px;
+  margin-right: 4px;
+}
+
+.cardBody {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  margin-top: -40px;
+}
