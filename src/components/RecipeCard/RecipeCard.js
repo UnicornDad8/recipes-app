@@ -6,27 +6,31 @@ import styles from "./RecipeCard.modules.css";
 
 const { width } = Dimensions.get("window");
 
-const RecipeCard = ({ title, image, author, rating, time }) => {
+const RecipeCard = ({ title, image, author, rating, time, style }) => {
   return (
     <View
-      style={{
-        borderRadius: 10,
-        padding: 10,
-        width: width * 0.7,
-        marginVertical: 16,
-        marginTop: 46,
-        // ios
-        backgroundColor: colors.white,
-        shadowColor: colors.black,
-        shadowOffset: {
-          width: 0,
-          height: 1,
+      style={[
+        {
+          borderRadius: 10,
+          padding: 10,
+          width: width * 0.7,
+          marginBottom: 32,
+          marginTop: 46,
+          marginRight: 16,
+          // ios
+          backgroundColor: colors.white,
+          shadowColor: colors.black,
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          shadowOpacity: 0.22,
+          shadowRadius: 2.22,
+          // Android
+          elevation: 3,
         },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        // Android
-        elevation: 3,
-      }}
+        style,
+      ]}
     >
       <View style={styles.row}>
         <View style={{ flex: 1 }}>
