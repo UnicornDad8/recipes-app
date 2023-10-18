@@ -40,32 +40,51 @@ const RecipeCard = ({ title, image, author, rating, time, style }) => {
           >
             {title}
           </Text>
-          <Rating rating={4.2} />
+          <Rating rating={rating} />
         </View>
         <Image
           style={styles.image}
           source={{
-            uri: "https://github.com/Ceci007/image-repository/blob/master/img/course-7.jpg?raw=true",
+            uri: image,
           }}
         />
       </View>
 
       <View style={styles.cardBody}>
-        <View style={styles.row}>
-          <Image style={styles.authorImage} source={{ uri: author?.image }} />
-          <Text style={[styles.cardFooter, { color: colors.lightMediumGray }]}>
-            By {author?.name}
-          </Text>
-        </View>
-        <View style={styles.row}>
-          <Image
-            style={styles.timerIcon}
-            source={require("../../../assets/timer.png")}
-          />
-          <Text style={[styles.cardFooter, { color: colors.lightMediumGray }]}>
-            {time}
-          </Text>
-        </View>
+        {author ? (
+          <View style={styles.row}>
+            <Image
+              style={[
+                styles.authorImage,
+                { backgroundColor: colors.lightGray },
+              ]}
+              source={{ uri: author?.image }}
+            />
+            <Text
+              style={[styles.cardFooter, { color: colors.lightMediumGray }]}
+            >
+              By {author?.name}
+            </Text>
+          </View>
+        ) : (
+          <View />
+        )}
+
+        {time ? (
+          <View style={styles.row}>
+            <Image
+              style={styles.timerIcon}
+              source={require("../../../assets/timer.png")}
+            />
+            <Text
+              style={[styles.cardFooter, { color: colors.lightMediumGray }]}
+            >
+              {time}
+            </Text>
+          </View>
+        ) : (
+          <View />
+        )}
       </View>
     </View>
   );

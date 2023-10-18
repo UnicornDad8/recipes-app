@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { SafeAreaView, ScrollView, View, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { RecipesContext } from "../../../App";
+import { HealthyRecipesContext, RecipesContext } from "../../../App";
 import Input from "../../components/Input";
 import Title from "../../components/Title";
 import RecipeCard from "../../components/RecipeCard";
@@ -11,7 +11,7 @@ import styles from "./Home.modules.css";
 
 const Home = ({ navigation }) => {
   const { recipes } = useContext(RecipesContext);
-  console.log(recipes);
+  const { healthyRecipes } = useContext(HealthyRecipesContext);
 
   return (
     <SafeAreaView>
@@ -22,24 +22,30 @@ const Home = ({ navigation }) => {
             pressable={true}
             onPress={() => navigation.navigate("Search")}
           />
-          <Title text="Featured Recipes" />
+          <Title text="Healthy Recipes" />
 
           <FlatList
             horizontal
-            data={[1, 2, 3]}
+            data={healthyRecipes}
             style={{ marginHorizontal: -24 }}
-            keyExtractor={(item) => String(item)}
+            keyExtractor={(item) => String(item?.id)}
             showsHorizontalScrollIndicator={false}
-            renderItem={({ index }) => (
+            renderItem={({ item, index }) => (
               <RecipeCard
                 style={index === 0 ? { marginLeft: 24 } : {}}
-                title="Steak with tomato sauce and bulgur rice."
-                time="20 mins"
-                author={{
-                  name: "James Milner",
-                  image:
-                    "https://github.com/Ceci007/image-repository/blob/master/img/team-5.jpg?raw=true",
-                }}
+                key={index}
+                title={item?.name}
+                time={item?.cook_time_minutes}
+                image={item?.thumbnail_url}
+                rating={item?.user_ratings?.score}
+                author={
+                  item?.credits?.length
+                    ? {
+                        name: item?.credits[0]?.name,
+                        image: item?.credits[0]?.image_url,
+                      }
+                    : null
+                }
               />
             )}
           />
@@ -52,20 +58,26 @@ const Home = ({ navigation }) => {
 
           <FlatList
             horizontal
-            data={[1, 2, 3]}
+            data={recipes}
             style={{ marginHorizontal: -24 }}
-            keyExtractor={(item) => String(item)}
+            keyExtractor={(item) => String(item?.id)}
             showsHorizontalScrollIndicator={false}
-            renderItem={({ index }) => (
+            renderItem={({ item, index }) => (
               <Card
                 style={index === 0 ? { marginLeft: 24 } : {}}
-                title="Steak with tomato sauce and bulgur rice."
-                time="20 mins"
-                author={{
-                  name: "James Milner",
-                  image:
-                    "https://github.com/Ceci007/image-repository/blob/master/img/team-5.jpg?raw=true",
-                }}
+                key={index}
+                title={item?.name}
+                servings={item?.num_servings}
+                image={item?.thumbnail_url}
+                rating={item?.user_ratings?.score}
+                author={
+                  item?.credits?.length
+                    ? {
+                        name: item?.credits[0]?.name,
+                        image: item?.credits[0]?.image_url,
+                      }
+                    : null
+                }
               />
             )}
           />

@@ -5,7 +5,7 @@ import styles from "./Card.modules.css";
 
 const { width } = Dimensions.get("window");
 
-const Card = ({ title, image, time, style }) => {
+const Card = ({ title, image, servings, style }) => {
   return (
     <View
       style={[
@@ -17,16 +17,22 @@ const Card = ({ title, image, time, style }) => {
       <Image
         style={styles.image}
         source={{
-          uri: "https://github.com/Ceci007/image-repository/blob/master/img/course-7.jpg?raw=true",
+          uri: image,
         }}
       />
       <Text numberOfLines={2} style={[styles.title, { color: colors.gray }]}>
         {title}
       </Text>
-      <Text style={[styles.label, { color: colors.lightMediumGray }]}>
-        Time
-      </Text>
-      <Text style={[styles.value, { color: colors.gray }]}>{time}</Text>
+      {servings ? (
+        <>
+          <Text style={[styles.label, { color: colors.lightMediumGray }]}>
+            Servings
+          </Text>
+          <Text style={[styles.value, { color: colors.gray }]}>
+            {servings} plates
+          </Text>
+        </>
+      ) : null}
     </View>
   );
 };
