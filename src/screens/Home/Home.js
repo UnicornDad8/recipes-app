@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { SafeAreaView, ScrollView, View, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { HealthyRecipesContext, RecipesContext } from "../../../App";
@@ -12,6 +12,23 @@ import styles from "./Home.modules.css";
 const Home = ({ navigation }) => {
   const { recipes } = useContext(RecipesContext);
   const { healthyRecipes } = useContext(HealthyRecipesContext);
+  const [tags, setTags] = useState([]);
+  const [selectedTag, setSelectedTag] = useState("");
+
+  useEffect(() => {
+    const tagsList = [];
+
+    recipes?.forEach((recipe) => {
+      recipe?.tags?.forEach((tag) => {
+        if (!tagsList?.includes(tag?.name)) {
+          tagsList?.push(tag?.name);
+        }
+      });
+    });
+
+    setTags(tagsList);
+    if (tagsList) setSelectedTag(tagsList[0]);
+  }, [recipes]);
 
   return (
     <SafeAreaView>
@@ -51,9 +68,9 @@ const Home = ({ navigation }) => {
           />
 
           <Categories
-            categories={["Trending", "Seasonal"]}
-            selectedCategory="Trending"
-            onCategoryPress={() => {}}
+            categories={tags}
+            selectedCategory={selectedTag}
+            onCategoryPress={setSelectedTag}
           />
 
           <FlatList
