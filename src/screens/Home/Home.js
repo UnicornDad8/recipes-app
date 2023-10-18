@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView, ScrollView, View, FlatList } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { RecipesContext } from "../../../App";
 import Input from "../../components/Input";
 import Title from "../../components/Title";
 import RecipeCard from "../../components/RecipeCard";
@@ -9,6 +10,9 @@ import Categories from "../../components/Categories";
 import styles from "./Home.modules.css";
 
 const Home = ({ navigation }) => {
+  const { recipes } = useContext(RecipesContext);
+  console.log(recipes);
+
   return (
     <SafeAreaView>
       <StatusBar style="dark" />

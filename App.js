@@ -1,3 +1,4 @@
+import React, { createContext, useState } from "react";
 import { Pressable, Image } from "react-native";
 import "react-native-gesture-handler";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
@@ -7,6 +8,7 @@ import Home from "./src/screens/Home";
 import Search from "./src/screens/Search";
 
 const Stack = createStackNavigator();
+export const RecipesContext = createContext();
 
 const theme = {
   ...DefaultTheme,
@@ -28,30 +30,34 @@ const BackButton = (props) => {
 };
 
 export default function App() {
+  const [recipes, setRecipes] = useState([]);
+
   return (
-    <NavigationContainer theme={theme}>
-      <Stack.Navigator
-        screenOptions={{
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      >
-        <Stack.Screen
-          name="Splash"
-          component={Splash}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerLeft: null, gestureEnabled: false }}
-        />
-        <Stack.Screen
-          name="Search"
-          component={Search}
-          options={{ headerLeft: (props) => <BackButton {...props} /> }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <RecipesContext.Provider value={{ recipes, setRecipes }}>
+      <NavigationContainer theme={theme}>
+        <Stack.Navigator
+          screenOptions={{
+            headerTitleAlign: "center",
+            headerShadowVisible: false,
+          }}
+        >
+          <Stack.Screen
+            name="Splash"
+            component={Splash}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ headerLeft: null, gestureEnabled: false }}
+          />
+          <Stack.Screen
+            name="Search"
+            component={Search}
+            options={{ headerLeft: (props) => <BackButton {...props} /> }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </RecipesContext.Provider>
   );
 }

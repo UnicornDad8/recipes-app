@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { getRecipesList } from "../../http";
+import { RecipesContext } from "../../../App";
 import Button from "../../components/Button";
 import colors from "../../constants/Colors";
 import styles from "./Splash.modules.css";
 
 const Splash = ({ navigation }) => {
+  const { setRecipes } = useContext(RecipesContext);
+
   useEffect(() => {
     handleRecipesFetch();
   }, []);
@@ -14,7 +17,7 @@ const Splash = ({ navigation }) => {
   const handleRecipesFetch = async () => {
     try {
       const recipes = await getRecipesList();
-      console.log(recipes);
+      setRecipes(recipes?.data?.results);
     } catch (err) {
       console.log(err.message);
     }
