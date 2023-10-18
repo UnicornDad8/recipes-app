@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, ImageBackground, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { getRecipesList } from "../../http";
 import Button from "../../components/Button";
 import colors from "../../constants/Colors";
 import styles from "./Splash.modules.css";
 
 const Splash = ({ navigation }) => {
+  useEffect(() => {
+    handleRecipesFetch();
+  }, []);
+
+  const handleRecipesFetch = async () => {
+    try {
+      const recipes = await getRecipesList();
+      console.log(recipes);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   return (
     <View>
       <StatusBar style="light" />
